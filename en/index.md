@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: Swift Notes
-  text: Some notes about swift learning.
+  name: Coding Notes
+  text: Some notes about coding learning.
   # tagline:
   actions:
     - theme: brand
@@ -16,7 +16,8 @@ hero:
 
 features:
   - title: Examples
-    details: Some interesting SwiftUI code examples.
+    details: Some interesting code examples.
+    link: /projects/examples/
   - title: Tutorails
     details: All the tutorials I have written.
 
