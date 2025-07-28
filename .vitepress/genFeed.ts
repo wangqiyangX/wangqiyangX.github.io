@@ -51,7 +51,7 @@ async function genFeedZH(config: SiteConfig) {
 
 async function genFeedEN(config: SiteConfig) {
   const feed = new Feed({
-    title: "Swift Notes",
+    title: "Coding Notes",
     description: "Some articles",
     id: baseUrl,
     link: baseUrl,

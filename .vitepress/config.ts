@@ -38,9 +38,8 @@ const headers =
 
 export default defineConfig({
   srcExclude: ["**/README.md", "**/TODO.md"],
-  base: "/swift-notes/",
 
-  title: "Swift Notes",
+  title: "Coding Notes",
 
   rewrites: {
     "en/:rest*": ":rest*",

@@ -1,4 +1,4 @@
-# Swift Notes
+# Coding Notes
 
 > Acknowledgments
 >
