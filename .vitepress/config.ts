@@ -21,7 +21,7 @@ const umamiScript: HeadConfig = [
 const baseHeaders: HeadConfig[] = [
   ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
   ["meta", { property: "og:type", content: "website" }],
-  ["meta", { property: "og:site_name", content: "Swift 开发笔记" }],
+  ["meta", { property: "og:site_name", content: "编程手札" }],
   [
     "meta",
     {

@@ -9,7 +9,7 @@ const baseUrl = `https://wangqiyangx.github.io/swift-notes`;
 
 async function genFeedZH(config: SiteConfig) {
   const feed = new Feed({
-    title: "Swift 开发笔记",
+    title: "编程手札",
     description: "记录开发日常",
     id: baseUrl,
     link: baseUrl,
