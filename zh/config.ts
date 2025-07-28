@@ -39,6 +39,10 @@ export default defineAdditionalConfig({
         base: "/zh/projects/open-source/",
         items: sidebarOpenSource(),
       },
+      "/zh/books": {
+        base: "/zh/books/ddia/",
+        items: sidebarDDIA(),
+      },
     },
 
     editLink: {
@@ -140,6 +144,16 @@ function nav(): DefaultTheme.NavItem[] {
         {
           text: "Xcode",
           link: "/zh/docs/xcode/",
+        },
+      ],
+    },
+    {
+      text: "书籍",
+      activeMatch: "/zh/books",
+      items: [
+        {
+          text: "设计数据密集型应用程序",
+          link: "/zh/books/ddia",
         },
       ],
     },
@@ -580,6 +594,19 @@ function sidebarOpenSource(): DefaultTheme.SidebarItem[] {
           link: "/sfsymbolpicker",
         },
       ],
+    },
+  ];
+}
+
+function sidebarDDIA(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "数据系统架构中的权衡",
+      link: "/tradeoffs-in-data-systems-architecture",
+    },
+    {
+      text: "定义非功能性需求",
+      link: "/defining-nonfunctional-requirements",
     },
   ];
 }

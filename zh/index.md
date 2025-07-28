@@ -2,21 +2,25 @@
 layout: home
 
 hero:
-  name: Swift 开发笔记
-  text: 记录 Swift 相关内容。
+  name: 编程手札
+  text: 记录我的学习心得。
   # tagline:
   actions:
     - theme: brand
-      text: Swift 入门之旅
-      link: /zh/docs/swift/preface/a-swift-tour
-    - theme: alt
       text: 博客
       link: /zh/posts
+    - theme: alt
+      text: 翻译
+      link: /zh/docs
 #   image:
 #     src: /vitepress-logo-large.svg
 #     alt: VitePress
 
 features:
+  - icon:
+      src: /book.svg
+    title: 设计数据密集型应用程序
+    details: 基于第二版进行翻译
   - icon:
       src: /swift.png
     title: Swift 编程语言

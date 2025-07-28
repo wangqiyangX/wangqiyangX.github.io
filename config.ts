@@ -2,7 +2,7 @@ import { defineAdditionalConfig, type DefaultTheme } from "vitepress";
 
 export default defineAdditionalConfig({
   lang: "en-US",
-  description: "Some notes about swift learning.",
+  description: "Some notes about coding.",
 
   themeConfig: {
     nav: nav(),
