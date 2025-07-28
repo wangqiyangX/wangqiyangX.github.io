@@ -19,6 +19,14 @@ export default defineAdditionalConfig({
         base: "/zh/docs/swiftui/",
         items: sidebarSwiftUI(),
       },
+      "/zh/docs/swiftdata": {
+        base: "/zh/docs/swiftdata",
+        items: sidebarSwiftDate(),
+      },
+      "/zh/docs/foundation": {
+        base: "/zh/docs/foundation",
+        items: sidebarFoundation(),
+      },
       "/zh/posts/": {
         base: "/zh/posts/",
         items: sidebarPosts(),
@@ -115,7 +123,23 @@ function nav(): DefaultTheme.NavItem[] {
         },
         {
           text: "SwiftUI",
-          link: "/zh/docs/swiftui/view-layout/scroll-views",
+          link: "/zh/docs/swiftui/",
+        },
+        {
+          text: "Swift Data",
+          link: "/zh/docs/swiftdata/",
+        },
+        {
+          text: "Foundation",
+          link: "/zh/docs/foundation/",
+        },
+        {
+          text: "WidgetKit",
+          link: "/zh/docs/widgetkit/",
+        },
+        {
+          text: "Xcode",
+          link: "/zh/docs/xcode/",
         },
       ],
     },
@@ -303,6 +327,38 @@ function sidebarSwift(): DefaultTheme.SidebarItem[] {
 function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
   return [
     {
+      text: "视图",
+      base: "/zh/docs/swiftui/views/",
+      items: [
+        {
+          text: "控件和指示器",
+          collapsed: true,
+          base: "/zh/docs/swiftui/views/controls-and-indicators/",
+          link: "/",
+          items: [
+            {
+              text: "提供触觉反馈",
+              collapsed: true,
+              items: [
+                {
+                  text: "sensoryFeedback(_:trigger:)",
+                  link: "sensoryfeedback(_:trigger:)",
+                },
+                {
+                  text: "sensoryFeedback(trigger:_:)",
+                  link: "sensoryfeedback(trigger:_:)",
+                },
+                {
+                  text: "SensoryFeedback",
+                  link: "sensoryfeedback",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       text: "视图布局",
       base: "/zh/docs/swiftui/view-layout/",
       items: [
@@ -460,6 +516,18 @@ function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
       ],
     },
   ];
+}
+
+function sidebarSwiftDate(): DefaultTheme.SidebarItem[] {
+  return [];
+}
+
+function sidebarFoundation(): DefaultTheme.SidebarItem[] {
+  return [];
+}
+
+function sidebarXcode(): DefaultTheme.SidebarItem[] {
+  return [];
 }
 
 function sidebarPosts(): DefaultTheme.SidebarItem[] {
