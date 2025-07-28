@@ -19,4 +19,6 @@ features:
     details: Some interesting SwiftUI code examples.
   - title: Tutorails
     details: All the tutorials I have written.
+
+gitChangelog: false
 ---

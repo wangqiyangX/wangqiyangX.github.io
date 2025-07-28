@@ -59,6 +59,7 @@ export default defineConfig({
 
   markdown: {
     math: true,
+    lineNumbers: true,
     codeTransformers: [
       {
         postprocess(code) {

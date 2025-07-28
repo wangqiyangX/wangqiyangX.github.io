@@ -25,4 +25,6 @@ features:
       src: /swiftui.png
     title: SwiftUI 文档
     details: Apple 开发的声明式 UI 库
+
+gitChangelog: false
 ---

@@ -19,6 +19,14 @@ export default defineAdditionalConfig({
         base: "/zh/docs/swiftui/",
         items: sidebarSwiftUI(),
       },
+      "/zh/docs/swiftdata": {
+        base: "/zh/docs/swiftdata",
+        items: sidebarSwiftDate(),
+      },
+      "/zh/docs/foundation": {
+        base: "/zh/docs/foundation",
+        items: sidebarFoundation(),
+      },
       "/zh/posts/": {
         base: "/zh/posts/",
         items: sidebarPosts(),
@@ -65,7 +73,7 @@ export default defineAdditionalConfig({
     notFound: {
       title: "页面未找到",
       quote:
-        "但如果你不改变方向，并且继续寻找，你可能最终会到达你所前往的地方。",
+        "但如果您不改变方向，并且继续寻找，您可能最终会到达您所前往的地方。",
       linkLabel: "前往首页",
       linkText: "带我回首页",
     },
@@ -99,6 +107,10 @@ function nav(): DefaultTheme.NavItem[] {
           text: "开源项目",
           link: "/zh/projects/open-source",
         },
+        {
+          text: "上架项目",
+          link: "/zh/store/news",
+        },
       ],
     },
     {
@@ -111,7 +123,23 @@ function nav(): DefaultTheme.NavItem[] {
         },
         {
           text: "SwiftUI",
-          link: "/zh/docs/swiftui/view-layout/scroll-views",
+          link: "/zh/docs/swiftui/",
+        },
+        {
+          text: "Swift Data",
+          link: "/zh/docs/swiftdata/",
+        },
+        {
+          text: "Foundation",
+          link: "/zh/docs/foundation/",
+        },
+        {
+          text: "WidgetKit",
+          link: "/zh/docs/widgetkit/",
+        },
+        {
+          text: "Xcode",
+          link: "/zh/docs/xcode/",
         },
       ],
     },
@@ -299,24 +327,57 @@ function sidebarSwift(): DefaultTheme.SidebarItem[] {
 function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
   return [
     {
+      text: "视图",
+      base: "/zh/docs/swiftui/views/",
+      items: [
+        {
+          text: "控件和指示器",
+          collapsed: true,
+          base: "/zh/docs/swiftui/views/controls-and-indicators/",
+          link: "/",
+          items: [
+            {
+              text: "提供触觉反馈",
+              collapsed: true,
+              items: [
+                {
+                  text: "sensoryFeedback(_:trigger:)",
+                  link: "sensoryfeedback(_:trigger:)",
+                },
+                {
+                  text: "sensoryFeedback(trigger:_:)",
+                  link: "sensoryfeedback(trigger:_:)",
+                },
+                {
+                  text: "SensoryFeedback",
+                  link: "sensoryfeedback",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       text: "视图布局",
-      collapsed: true,
       base: "/zh/docs/swiftui/view-layout/",
       items: [
         {
           text: "视图分组",
+          collapsed: true,
           base: "/zh/docs/swiftui/view-layout/view-groupings/",
           link: "/",
           items: [],
         },
         {
           text: "滚动视图",
+          collapsed: true,
           base: "/zh/docs/swiftui/view-layout/scroll-views/",
           link: "/",
           items: [
             {
               text: "创建滚动视图",
-              collapsed: false,
+              collapsed: true,
               items: [
                 {
                   text: "ScrollView",
@@ -334,7 +395,7 @@ function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
             },
             {
               text: "管理滚动位置",
-              collapsed: false,
+              collapsed: true,
               items: [
                 {
                   text: "scrollPosition(_:anchor:)",
@@ -360,7 +421,7 @@ function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
             },
             {
               text: "定义滚动目标",
-              collapsed: false,
+              collapsed: true,
               items: [
                 {
                   text: "scrollTargetBehavior(_:)",
@@ -411,17 +472,62 @@ function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
     {
       text: "事件处理",
       collapsed: true,
-      base: "/zh/docs/swiftui/event-handing/",
+      base: "/zh/docs/swiftui/event-handling/",
       items: [
         {
           text: "手势",
-          base: "/zh/docs/swiftui/event-handing/gestures/",
+          base: "/zh/docs/swiftui/event-handling/gestures/",
           link: "/",
-          items: [],
+          items: [
+            {
+              text: "重点",
+              collapsed: false,
+              items: [
+                {
+                  text: "通过手势添加交互性",
+                  link: "adding-interactivity-with-gestures",
+                },
+              ],
+            },
+            {
+              text: "识别点击手势",
+              collapsed: false,
+              items: [
+                {
+                  text: "onTapGesture(count:perform:)",
+                  link: "ontapgesture(count:perform:)",
+                },
+                {
+                  text: "onTapGesture(count:coordinateSpace:perform:)",
+                  link: "ontapgesture(count:coordinatespace:perform:)",
+                },
+                {
+                  text: "TapGesture",
+                  link: "tapgesture",
+                },
+                {
+                  text: "SpatialTapGesture",
+                  link: "spatialtapgesture",
+                },
+              ],
+            },
+          ],
         },
       ],
     },
   ];
+}
+
+function sidebarSwiftDate(): DefaultTheme.SidebarItem[] {
+  return [];
+}
+
+function sidebarFoundation(): DefaultTheme.SidebarItem[] {
+  return [];
+}
+
+function sidebarXcode(): DefaultTheme.SidebarItem[] {
+  return [];
 }
 
 function sidebarPosts(): DefaultTheme.SidebarItem[] {
@@ -449,9 +555,15 @@ function sidebarExamples(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: "代码示例",
-      collapsed: true,
+      collapsed: false,
       base: "/zh/projects/examples",
-      items: [],
+      items: [
+        { text: "范围选择器", link: "/the-dual-slider" },
+        {
+          text: "贝塞尔曲线控制器",
+          link: "/the-bezier-curve-picker",
+        },
+      ],
     },
   ];
 }
@@ -460,9 +572,14 @@ function sidebarOpenSource(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: "开源项目",
-      collapsed: true,
+      collapsed: false,
       base: "/zh/projects/open-source",
-      items: [],
+      items: [
+        {
+          text: "SFSymbolPicker",
+          link: "/sfsymbolpicker",
+        },
+      ],
     },
   ];
 }

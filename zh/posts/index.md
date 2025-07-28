@@ -12,5 +12,7 @@ hero:
 
 features:
   - title: 教程
-  - title: 代码示例
+    link: /tutorials
+
+gitChangelog: false
 ---

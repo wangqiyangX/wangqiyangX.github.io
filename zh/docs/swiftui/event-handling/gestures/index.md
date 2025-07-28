@@ -6,7 +6,7 @@
 
 通过向视图添加手势修饰符来响应手势。您可以监听轻触、拖动、捏合和其他标准手势。
 
-![gestures-hero](https://docs-assets.developer.apple.com/published/6a1478e9bc9c150def717738cb949d52/gestures-hero@2x.png)
+![gestures-hero](/public/docs/swiftui/gestures/gestures-hero@2x.png)
 
 您还可以使用 `simultaneously(with:)` 、 `sequenced(before:)` 或 `exclusively(before:)` 修饰符从单个手势组合自定义手势，或使用 `modifiers(_:)` 修饰符将手势与键盘修饰符结合。
 

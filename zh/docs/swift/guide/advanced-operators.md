@@ -69,7 +69,7 @@ let combinedbits = someBits | moreBits  // 等于 11111110
 按位异或运算符，或称为“排他或运算符” ( `^` )，比较两个数字的位。该运算符返回一个新数字，其位在输入位不同的地方设置为 `1` ，在输入位相同的地方设置为 `0` ：
 
 ![bitwiseXOR](https://docs.swift.org/swift-book/images/org.swift.tspl/bitwiseXOR@2x.png){.light-only}
-![bitwiseXOR~dark](https://docs.swift.org/swift-book/images/org.swift.tspl/bitwiseXOR~dark@2x.png){.dark-only}{.light-only}
+![bitwiseXOR~dark](https://docs.swift.org/swift-book/images/org.swift.tspl/bitwiseXOR~dark@2x.png){.dark-only}
 
 在下面的示例中， `firstBits` 和 `otherBits` 的值在一个位置各自有一个位设置为 `1` ，而另一个则没有。按位异或运算符在其输出值中将这两个位都设置为 `1` 。 `firstBits` 和 `otherBits` 中的其余位匹配，并在输出值中设置为 `0` ：
 
