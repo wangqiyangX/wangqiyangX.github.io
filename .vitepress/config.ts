@@ -57,6 +57,7 @@ export default defineConfig({
   head: headers,
 
   markdown: {
+    // theme: "monokai",
     math: true,
     lineNumbers: true,
     codeTransformers: [
@@ -124,6 +125,9 @@ export default defineConfig({
         "@nolebase/vitepress-plugin-inline-link-preview",
       ],
     },
+    build: {
+      chunkSizeWarningLimit: Infinity
+    }
   },
 
   themeConfig: {

@@ -2,7 +2,7 @@ import { defineAdditionalConfig, type DefaultTheme } from "vitepress";
 
 export default defineAdditionalConfig({
   lang: "zh-Hans",
-  title: "Swift 笔记",
+  title: "编程手札",
   description: "记录 Swift 相关内容",
 
   themeConfig: {
