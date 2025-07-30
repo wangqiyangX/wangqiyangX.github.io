@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@lunariajs/core/config.schema.json",
   "repository": {
-    "name": "wangqiyangx/swift-notes"
+    "name": "wangqiyangx/wangqiyangx.github.io"
   },
   "files": [
     {

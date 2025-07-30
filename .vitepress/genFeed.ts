@@ -5,7 +5,7 @@ import { writeFileSync } from "fs";
 import { Feed } from "feed";
 import { createContentLoader, type SiteConfig } from "vitepress";
 
-const baseUrl = `https://wangqiyangx.github.io/swift-notes`;
+const baseUrl = `https://wangqiyangx.github.io/`;
 
 async function genFeedZH(config: SiteConfig) {
   const feed = new Feed({
