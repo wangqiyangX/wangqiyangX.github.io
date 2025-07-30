@@ -2,7 +2,7 @@
 
 ## 效果
 
-![dual-slider-demo](/public/dual-slider-demo.gif)
+![dual-slider-demo](/dual-slider-demo.gif)
 
 ## 代码
 

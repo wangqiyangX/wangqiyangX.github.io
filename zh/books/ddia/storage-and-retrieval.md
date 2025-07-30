@@ -109,7 +109,7 @@ SSTable 文件格式
 In practice, hash tables are not used very often for database indexes, and instead it is much more common to keep data in a structure that is sorted by key [3]. One example of such a structure is a Sorted String Table, or SSTable for short, as shown in Figure 4-2. This file format also stores key-value pairs, but it ensures that they are sorted by key, and each key only appears once in the file.
 在实际应用中，哈希表并不常用于数据库索引，而是更常见的是将数据保存在按键排序的结构中[3]。这种结构的一个例子是有序字符串表，简称 SSTable，如图 4-2 所示。该文件格式同样存储键值对，但确保它们按键排序，并且每个键在文件中只出现一次。
 
-![ddia 0402](/public/ddia/ddia_0402.png)
+![ddia 0402](/ddia/ddia_0402.png)
 Figure 4-2. An SSTable with a sparse index, allowing queries to jump to the right block.
 图 4-2. 一个具有稀疏索引的 SSTable，允许查询跳转到正确的块。
 
