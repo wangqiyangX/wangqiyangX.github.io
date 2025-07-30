@@ -128,8 +128,7 @@ export default defineConfig({
       ],
     },
     build: {
-      chunkSizeWarningLimit: Infinity
-     } 
+      chunkSizeWarningLimit: Infinity,
     },
   },
 
@@ -147,5 +146,6 @@ export default defineConfig({
       provider: "local",
     },
   },
+
   buildEnd: genFeed,
 });
