@@ -1,45 +1,24 @@
-Chapter 4. Storage and Retrieval
-第 4 章 存储与检索
+# 存储与检索
 
-One of the miseries of life is that everybody names things a little bit wrong. And so it makes everything a little harder to understand in the world than it would be if it were named differently. A computer does not primarily compute in the sense of doing arithmetic. […] They primarily are filing systems.
-生活中的一大痛苦是每个人对事物的命名都有些错误。因此，这使得世界上的一切比如果用不同的名称来命名时更难以理解。计算机并不是主要以进行算术运算的方式进行计算。[…] 它们主要是文件系统。
+> 生活中的一大痛苦是每个人对事物的命名都有些错误。因此，这使得世界上的一切比如果用不同的名称来命名时更难以理解。计算机并不是主要以进行算术运算的方式进行计算。[…] 它们主要是文件系统。
+>
+> 理查德·费曼，《特立独行的思维》研讨会（1985）
 
-Richard Feynman, Idiosyncratic Thinking seminar (1985)
-理查德·费曼，《特立独行的思维》研讨会（1985）
-
-A Note for Early Release Readers
-给提前发布读者的说明
-
-With Early Release ebooks, you get books in their earliest form—the author’s raw and unedited content as they write—so you can take advantage of these technologies long before the official release of these titles.
-通过早期发布的电子书，您可以获得书籍的最初形式——作者在写作时的原始和未编辑内容——因此您可以在这些书籍正式发布之前就利用这些技术。
-
-This will be the 4th chapter of the final book. The GitHub repo for this book is https://github.com/ept/ddia2-feedback.
-这将是最终书籍的第四章。该书的 GitHub 仓库是 https://github.com/ept/ddia2-feedback。
-
-If you have comments about how we might improve the content and/or examples in this book, or if you notice missing material within this chapter, please reach out on GitHub.
-如果您对我们如何改进本书的内容和/或示例有任何意见，或者如果您在本章中发现缺失的材料，请在 GitHub 上与我们联系。
-
-On the most fundamental level, a database needs to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data back to you.
 在最基本的层面上，数据库需要做两件事：当您给它一些数据时，它应该存储这些数据，而当您稍后再次询问时，它应该将数据还给您。
 
-In Chapter 3 we discussed data models and query languages—i.e., the format in which you give the database your data, and the interface through which you can ask for it again later. In this chapter we discuss the same from the database’s point of view: how the database can store the data that you give it, and how it can find the data again when you ask for it.
 在第三章中，我们讨论了数据模型和查询语言——即您向数据库提供数据的格式，以及您稍后可以请求数据的接口。在本章中，我们从数据库的角度讨论相同的内容：数据库如何存储您提供的数据，以及当您请求数据时它如何再次找到这些数据。
 
-Why should you, as an application developer, care how the database handles storage and retrieval internally? You’re probably not going to implement your own storage engine from scratch, but you do need to select a storage engine that is appropriate for your application, from the many that are available. In order to configure a storage engine to perform well on your kind of workload, you need to have a rough idea of what the storage engine is doing under the hood.
 作为应用程序开发者，您为什么要关心数据库如何在内部处理存储和检索？您可能不会从头开始实现自己的存储引擎，但您确实需要从众多可用的存储引擎中选择一个适合您应用程序的引擎。为了配置存储引擎以在您的工作负载上表现良好，您需要大致了解存储引擎在后台所做的事情。
 
-In particular, there is a big difference between storage engines that are optimized for transactional workloads (OLTP) and those that are optimized for analytics (we introduced this distinction in “Analytical versus Operational Systems”). This chapter starts by examining two families of storage engines for OLTP: log-structured storage engines that write out immutable data files, and storage engines such as B-trees that update data in-place. These structures are used for both key-value storage as well as secondary indexes.
 特别是，针对事务工作负载（OLTP）优化的存储引擎与针对分析优化的存储引擎之间存在很大差异（我们在“分析系统与操作系统”中介绍了这种区别）。本章首先考察两类用于 OLTP 的存储引擎：写出不可变数据文件的日志结构存储引擎，以及像 B 树这样的就地更新数据的存储引擎。这些结构既用于键值存储，也用于辅助索引。
 
-Later in “Data Storage for Analytics” we’ll discuss a family of storage engines that is optimized for analytics, and in “Multidimensional and Full-Text Indexes” we’ll briefly look at indexes for more advanced queries, such as text retrieval.
 稍后在“分析的数据存储”中，我们将讨论一类针对分析优化的存储引擎，而在“多维和全文索引”中，我们将简要查看用于更高级查询（如文本检索）的索引。
 
-Storage and Indexing for OLTP
-OLTP 的存储和索引
+## OLTP 的存储和索引
 
-Consider the world’s simplest database, implemented as two Bash functions:
 考虑世界上最简单的数据库，它由两个 Bash 函数实现：
 
+```bash
 #!/bin/bash
 
 db_set () {
@@ -49,21 +28,24 @@ echo "$1,$2" >> database
 db_get () {
 grep "^$1," database | sed -e "s/^$1,//" | tail -n 1
 }
-These two functions implement a key-value store. You can call db_set key value, which will store key and value in the database. The key and value can be (almost) anything you like—for example, the value could be a JSON document. You can then call db_get key, which looks up the most recent value associated with that particular key and returns it.
-这两个函数实现了一个键值存储。你可以调用 db_set key value ，它会将 key 和 value 存储在数据库中。键和值可以是你喜欢的（几乎）任何东西——例如，值可以是一个 JSON 文档。然后你可以调用 db_get key ，它会查找与该特定键关联的最新值并返回它。
+```
 
-And it works:
+这两个函数实现了一个键值存储。你可以调用 `db_set key value` ，它会将 `key` 和 `value` 存储在数据库中。键和值可以是你喜欢的（几乎）任何东西——例如，值可以是一个 JSON 文档。然后你可以调用 `db_get key`，它会查找与该特定键关联的最新值并返回它。
+
 而且它有效：
 
+```bash
 $ db_set 12 '{"name":"London","attractions":["Big Ben","London Eye"]}'
 
 $ db_set 42 '{"name":"San Francisco","attractions":["Golden Gate Bridge"]}'
 
 $ db_get 42
 {"name":"San Francisco","attractions":["Golden Gate Bridge"]}
-The storage format is very simple: a text file where each line contains a key-value pair, separated by a comma (roughly like a CSV file, ignoring escaping issues). Every call to db_set appends to the end of the file. If you update a key several times, old versions of the value are not overwritten—you need to look at the last occurrence of a key in a file to find the latest value (hence the tail -n 1 in db_get):
-存储格式非常简单：一个文本文件，每行包含一个键值对，用逗号分隔（大致像一个 CSV 文件，忽略转义问题）。每次调用 db_set 都会追加到文件的末尾。如果你多次更新一个键，旧版本的值不会被覆盖——你需要查看文件中该键的最后一次出现以找到最新值（因此在 db_get 中有 tail -n 1 ）：
+```
 
+存储格式非常简单：一个文本文件，每行包含一个键值对，用逗号分隔（大致像一个 CSV 文件，忽略转义问题）。每次调用 `db_set` 都会追加到文件的末尾。如果你多次更新一个键，旧版本的值不会被覆盖——你需要查看文件中该键的最后一次出现以找到最新值（因此在 `db_get` 中有 `tail -n 1` ）：
+
+```bash
 $ db_set 42 '{"name":"San Francisco","attractions":["Exploratorium"]}'
 
 $ db_get 42
@@ -73,16 +55,15 @@ $ cat database
 12,{"name":"London","attractions":["Big Ben","London Eye"]}
 42,{"name":"San Francisco","attractions":["Golden Gate Bridge"]}
 42,{"name":"San Francisco","attractions":["Exploratorium"]}
-The db_set function actually has pretty good performance for something that is so simple, because appending to a file is generally very efficient. Similarly to what db_set does, many databases internally use a log, which is an append-only data file. Real databases have more issues to deal with (such as handling concurrent writes, reclaiming disk space so that the log doesn’t grow forever, and handling partially written records when recovering from a crash), but the basic principle is the same. Logs are incredibly useful, and we will encounter them several times in this book.
+```
+
 db_set 函数的性能实际上相当不错，尽管它非常简单，因为向文件追加内容通常是非常高效的。与 db_set 的做法类似，许多数据库内部使用日志，这是一种仅追加的数据文件。真正的数据库需要处理更多问题（例如处理并发写入、回收磁盘空间以防止日志无限增长，以及在从崩溃恢复时处理部分写入的记录），但基本原理是相同的。日志非常有用，我们将在本书中多次遇到它们。
 
-Note
-注意
+::: tip **注意**
 
-The word log is often used to refer to application logs, where an application outputs text that describes what’s happening. In this book, log is used in the more general sense: an append-only sequence of records on disk. It doesn’t have to be human-readable; it might be binary and intended only for internal use by the database system.
 单词日志通常用于指代应用程序日志，其中应用程序输出描述正在发生的事情的文本。在本书中，日志是以更一般的意义使用的：磁盘上的仅追加记录序列。它不必是人类可读的；它可能是二进制的，仅供数据库系统内部使用。
+:::
 
-On the other hand, the db_get function has terrible performance if you have a large number of records in your database. Every time you want to look up a key, db_get has to scan the entire database file from beginning to end, looking for occurrences of the key. In algorithmic terms, the cost of a lookup is O(n): if you double the number of records n in your database, a lookup takes twice as long. That’s not good.
 另一方面，如果您的数据库中有大量记录， db_get 函数的性能非常糟糕。每次您想查找一个键时， db_get 都必须从头到尾扫描整个数据库文件，寻找该键的出现。在算法术语中，查找的成本是 O(n)：如果您将数据库中的记录数 n 加倍，查找所需的时间也会加倍。这并不好。
 
 In order to efficiently find the value for a particular key in the database, we need a different data structure: an index. In this chapter we will look at a range of indexing structures and see how they compare; the general idea is to structure the data in a particular way (e.g., sorted by some key) that makes it faster to locate the data you want. If you want to search the same data in several different ways, you may need several different indexes on different parts of the data.
@@ -128,7 +109,7 @@ SSTable 文件格式
 In practice, hash tables are not used very often for database indexes, and instead it is much more common to keep data in a structure that is sorted by key [3]. One example of such a structure is a Sorted String Table, or SSTable for short, as shown in Figure 4-2. This file format also stores key-value pairs, but it ensures that they are sorted by key, and each key only appears once in the file.
 在实际应用中，哈希表并不常用于数据库索引，而是更常见的是将数据保存在按键排序的结构中[3]。这种结构的一个例子是有序字符串表，简称 SSTable，如图 4-2 所示。该文件格式同样存储键值对，但确保它们按键排序，并且每个键在文件中只出现一次。
 
-ddia 0402
+![ddia 0402](/public/ddia/ddia_0402.png)
 Figure 4-2. An SSTable with a sparse index, allowing queries to jump to the right block.
 图 4-2. 一个具有稀疏索引的 SSTable，允许查询跳转到正确的块。
 
