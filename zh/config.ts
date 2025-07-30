@@ -54,7 +54,8 @@ export default defineAdditionalConfig({
     },
 
     editLink: {
-      pattern: "https://github.com/wangqiyangx/swift-notes/edit/main/:path",
+      pattern:
+        "https://github.com/wangqiyangx/wangqiyangx.github.io/edit/main/:path",
       text: "在 GitHub 上编辑此页面",
     },
 

@@ -26,7 +26,7 @@ const baseHeaders: HeadConfig[] = [
     "meta",
     {
       property: "og:url",
-      content: "http://wangqiyangx.github.io/swift-notes/",
+      content: "http://wangqiyangx.github.io/",
     },
   ],
 ];
@@ -69,7 +69,7 @@ export default defineConfig({
     ],
     config(md) {
       const fence = md.renderer.rules.fence!;
-      md.renderer.rules.fence = function (tokens, idx, options, env, self) {
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
         const { localeIndex = "root" } = env;
         const codeCopyButtonTitle = (() => {
           switch (localeIndex) {
@@ -101,7 +101,7 @@ export default defineConfig({
   },
 
   sitemap: {
-    hostname: "https://wangqiyangx.github.io/swift-notes",
+    hostname: "https://wangqiyangx.github.io/",
     transformItems(items) {
       return items.filter((item) => !item.url.includes("migration"));
     },
@@ -113,7 +113,9 @@ export default defineConfig({
         workDir: "en",
         ignoreFiles: ["index.md"],
       }),
-      GitChangelog({ repoURL: "https://github.com/wangqiyangx/swift-notes" }),
+      GitChangelog({
+        repoURL: "https://github.com/wangqiyangx/wangqiyangx.github.io",
+      }),
       GitChangelogMarkdownSection(),
     ],
     optimizeDeps: {
@@ -127,14 +129,15 @@ export default defineConfig({
     },
     build: {
       chunkSizeWarningLimit: Infinity
-    }
+     } 
+    },
   },
 
   themeConfig: {
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/wangqiyangx/swift-notes",
+        link: "https://github.com/wangqiyangx/wangqiyangx.github.io",
         ariaLabel: "GitHub",
       },
       { icon: "x", link: "https://x.com/wangqiyangx", ariaLabel: "X" },
