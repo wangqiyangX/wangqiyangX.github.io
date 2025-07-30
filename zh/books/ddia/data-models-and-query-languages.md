@@ -152,7 +152,7 @@ WHERE users.id = 251;
 
 文档数据库可以存储规范化和非规范化的数据，但它们通常与非规范化相关联——部分原因是 JSON 数据模型使得存储额外的非规范化字段变得容易，部分原因是许多文档数据库对连接的支持较弱，使得规范化变得不方便。有些文档数据库根本不支持连接，因此你必须在应用程序代码中执行连接——也就是说，你首先获取一个包含 ID 的文档，然后执行第二个查询将该 ID 解析为另一个文档。在 MongoDB 中，也可以在聚合管道中使用 $lookup 运算符执行连接：
 
-```mongodb
+```SQL
 db.users.aggregate([
   { $match: { _id: 251 } },
   { $lookup: {
@@ -732,7 +732,7 @@ Datalog 数据库的内容由事实组成，每个事实对应于关系表中的
 
 示例 3-11。图 3-6 中数据的一个子集，以 Datalog 事实表示
 
-```datalog
+```SQL
 location(1, "North America", "continent").
 location(2, "United States", "country").
 location(3, "Idaho", "state").
@@ -748,7 +748,7 @@ born_in(100, 3). /* Lucy was born in Idaho */
 
 示例 3-12。与示例 3-5 相同的查询，以 Datalog 表达
 
-```Datalog
+```SQL
 within_recursive(LocID, PlaceName) :- location(LocID, PlaceName, _). /* Rule 1 */
 
 within_recursive(LocID, PlaceName) :- within(LocID, ViaID),          /* Rule 2 */

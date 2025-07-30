@@ -28,7 +28,7 @@ func onTapGesture(
 
 ### coordinateSpace
 
-接收位置值的坐标空间。默认为 [[CoordinateSpace.local]] 。
+接收位置值的坐标空间。默认为 [CoordinateSpace.local]()。
 
 ### action
 
