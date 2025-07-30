@@ -128,7 +128,8 @@ export default defineConfig({
       ],
     },
     build: {
-      chunkSizeWarningLimit: Infinity,
+      chunkSizeWarningLimit: Infinity
+     } 
     },
   },
 

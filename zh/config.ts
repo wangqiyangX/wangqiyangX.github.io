@@ -27,6 +27,14 @@ export default defineAdditionalConfig({
         base: "/zh/docs/foundation",
         items: sidebarFoundation(),
       },
+      "/zh/docs/usernotifications": {
+        base: "/zh/docs/usernotifications",
+        items: sidebaruserNotifications(),
+      },
+      "/zh/docs/xcode": {
+        base: "/zh/docs/xcode",
+        items: sidebarXcode(),
+      },
       "/zh/posts/": {
         base: "/zh/posts/",
         items: sidebarPosts(),
@@ -137,6 +145,10 @@ function nav(): DefaultTheme.NavItem[] {
         {
           text: "Foundation",
           link: "/zh/docs/foundation/",
+        },
+        {
+          text: "User Notifications",
+          link: "/zh/docs/usernotifications/",
         },
         {
           text: "WidgetKit",
@@ -538,6 +550,10 @@ function sidebarSwiftDate(): DefaultTheme.SidebarItem[] {
 }
 
 function sidebarFoundation(): DefaultTheme.SidebarItem[] {
+  return [];
+}
+
+function sidebaruserNotifications(): DefaultTheme.SidebarItem[] {
   return [];
 }
 
