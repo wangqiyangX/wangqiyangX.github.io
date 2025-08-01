@@ -42,12 +42,12 @@ export default defineConfig({
   title: "Coding Notes",
 
   rewrites: {
-    "en/:rest*": ":rest*",
+    "zh/:rest*": ":rest*",
   },
 
   locales: {
-    root: { label: "English" },
-    zh: { label: "简体中文" },
+    root: { label: "简体中文" },
+    en: { label: "English" },
   },
 
   lastUpdated: true,
