@@ -558,7 +558,24 @@ function sidebaruserNotifications(): DefaultTheme.SidebarItem[] {
 }
 
 function sidebarXcode(): DefaultTheme.SidebarItem[] {
-  return [];
+  return [
+    {
+      text: "界面",
+      base: "/zh/docs/xcode/interface/",
+      items: [
+        {
+          text: "资源管理",
+          base: "/zh/docs/xcode/interface/asset-management/",
+          items: [
+            {
+              text: "使用图标生成器创建应用图标",
+              link: "creating-your-app-icon-using-icon-composer",
+            },
+          ],
+        },
+      ],
+    },
+  ];
 }
 
 function sidebarPosts(): DefaultTheme.SidebarItem[] {
