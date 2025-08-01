@@ -162,7 +162,7 @@ function nav(): DefaultTheme.NavItem[] {
     },
     {
       text: "书籍",
-      activeMatch: "/books/ddia/",
+      activeMatch: "/books",
       items: [
         {
           text: "设计数据密集型应用程序",

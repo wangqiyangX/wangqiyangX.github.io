@@ -12,16 +12,5 @@ hero:
     - theme: alt
       text: 翻译
       link: /books
-#   image:
-#     src: /vitepress-logo-large.svg
-#     alt: VitePress
-
-features:
-  - icon:
-      src: /book.svg
-    title: 设计数据密集型应用程序
-    details: 基于第二版进行翻译
-
-
 gitChangelog: false
 ---
