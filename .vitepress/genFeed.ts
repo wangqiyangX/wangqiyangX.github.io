@@ -46,7 +46,7 @@ async function genFeedZH(config: SiteConfig) {
     });
   }
 
-  writeFileSync(path.join(config.outDir, `zh/feed.rss`), feed.rss2());
+  writeFileSync(path.join(config.outDir, `/feed.rss`), feed.rss2());
 }
 
 async function genFeedEN(config: SiteConfig) {
@@ -88,7 +88,7 @@ async function genFeedEN(config: SiteConfig) {
     });
   }
 
-  writeFileSync(path.join(config.outDir, `/feed.rss`), feed.rss2());
+  writeFileSync(path.join(config.outDir, `en/feed.rss`), feed.rss2());
 }
 
 export async function genFeed(config: SiteConfig) {

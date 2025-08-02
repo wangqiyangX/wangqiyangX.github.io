@@ -17,12 +17,12 @@
     }
   ],
   "defaultLocale": {
-    "label": "English",
-    "lang": "en"
+    "label": "简体中文",
+    "lang": "zh"
   },
   "locales": [
     {
-      "label": "简体中文",
+      "label": "English",
       "lang": "zh"
     }
   ],
