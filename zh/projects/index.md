@@ -11,7 +11,9 @@ hero:
 
 features:
   - title: 代码示例
-    link: /examples
+    link: /projects/examples
   - title: 开源项目
-    link: /open-sources
+    link: /projects/open-source
+
+gitChangelog: false
 ---

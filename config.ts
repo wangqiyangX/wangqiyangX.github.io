@@ -625,6 +625,14 @@ function sidebarDDIA(): DefaultTheme.SidebarItem[] {
       text: "定义非功能性需求",
       link: "/defining-nonfunctional-requirements",
     },
+    {
+      text: "数据模型与查询语言",
+      link: "/data-models-and-query-languages",
+    },
+    {
+      text: "存储与检索",
+      link: "/storage-and-retrieval",
+    },
   ];
 }
 

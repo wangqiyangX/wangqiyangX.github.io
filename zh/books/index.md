@@ -13,6 +13,7 @@ features:
       src: /book.svg
     title: 设计数据密集型应用程序
     details: 基于第二版进行翻译
+    link: /books/ddia
 
 gitChangelog: false
 ---

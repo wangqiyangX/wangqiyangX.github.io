@@ -14,10 +14,12 @@ features:
       src: /swiftui.png
     title: SwiftUI
     details: Apple 开发的声明式 UI 库
+    link: /docs/swiftui
   - icon:
       src: /swift.png
     title: Swift 编程语言
     details: 基于 6.1.2 进行翻译
+    link: /docs/swift
 
 gitChangelog: false
 ---
