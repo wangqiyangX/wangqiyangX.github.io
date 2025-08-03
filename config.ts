@@ -633,6 +633,22 @@ function sidebarDDIA(): DefaultTheme.SidebarItem[] {
       text: "存储与检索",
       link: "/storage-and-retrieval",
     },
+    {
+      text: "编码与演变",
+      link: "/encoding-and-evolution",
+    },
+    {
+      text: "复制",
+      link: "/replication",
+    },
+    {
+      text: "分片",
+      link: "/sharding",
+    },
+    {
+      text: "事务",
+      link: "/transactions",
+    },
   ];
 }
 
