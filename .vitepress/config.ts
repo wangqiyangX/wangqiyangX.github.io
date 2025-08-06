@@ -1,12 +1,12 @@
-import { defineConfig, HeadConfig } from "vitepress";
+import { BiDirectionalLinks } from "@nolebase/markdown-it-bi-directional-links";
+import { type HeadConfig, defineConfig } from "vitepress";
 import { genFeed } from "./genFeed.ts";
-import llmstxt from "vitepress-plugin-llms";
 import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from "@nolebase/vitepress-plugin-git-changelog/vite";
-import { BiDirectionalLinks } from "@nolebase/markdown-it-bi-directional-links";
 import { InlineLinkPreviewElementTransform } from "@nolebase/vitepress-plugin-inline-link-preview/markdown-it";
+import llmstxt from "vitepress-plugin-llms";
 import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
 
 const umamiScript: HeadConfig = [
@@ -102,6 +102,17 @@ export default defineConfig({
 
   sitemap: {
     hostname: "https://wangqiyangx.github.io/",
+    lastmodDateOnly: false,
+    xmlns: { // trim the xml namespace
+      news: true, // flip to false to omit the xml namespace for news
+      xhtml: true,
+      image: true,
+      video: true,
+      custom: [
+        'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"',
+        'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"',
+      ],
+    },
     transformItems(items) {
       return items.filter((item) => !item.url.includes("migration"));
     },

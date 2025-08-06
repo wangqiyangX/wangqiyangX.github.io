@@ -1,4 +1,4 @@
-import { defineAdditionalConfig, type DefaultTheme } from "vitepress";
+import { type DefaultTheme, defineAdditionalConfig } from "vitepress";
 
 export default defineAdditionalConfig({
   lang: "zh-Hans",
@@ -558,7 +558,17 @@ function sidebaruserNotifications(): DefaultTheme.SidebarItem[] {
 }
 
 function sidebarXcode(): DefaultTheme.SidebarItem[] {
-  return [];
+  return [
+    {
+      text: "界面",
+      base: "/docs/xcode/interface/",
+      items: [
+        {
+          text: ""
+        }
+      ]
+    }
+  ];
 }
 
 function sidebarPosts(): DefaultTheme.SidebarItem[] {
@@ -569,8 +579,16 @@ function sidebarPosts(): DefaultTheme.SidebarItem[] {
       base: "/posts/tutorials/",
       items: [
         {
-          text: "Button 教程",
+          text: "Button 入门",
           link: "the-ultimate-swiftui-button-tutorial",
+        },
+        {
+          text: "如何使用 SwiftUI 解析 HTML 文件",
+          link: "how-to-render-html-use-swiftui",
+        },
+        {
+          text: "WebKit 入门",
+          link: "introduction-to-webkit",
         },
       ],
     },
@@ -593,6 +611,14 @@ function sidebarExamples(): DefaultTheme.SidebarItem[] {
         {
           text: "贝塞尔曲线控制器",
           link: "/the-bezier-curve-picker",
+        },
+        {
+          text: "热力图",
+          link: "/heatmap",
+        },
+        {
+          text: "RSS 消息渲染",
+          link: "/rss-item-render",
         },
       ],
     },
@@ -634,7 +660,7 @@ function sidebarDDIA(): DefaultTheme.SidebarItem[] {
       link: "/storage-and-retrieval",
     },
     {
-      text: "编码与演变",
+      text: "编码与演进",
       link: "/encoding-and-evolution",
     },
     {

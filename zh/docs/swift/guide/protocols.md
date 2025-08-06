@@ -904,7 +904,7 @@ extension PrettyTextRepresentable  {
 
 ### [为协议扩展添加约束](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols#Adding-Constraints-to-Protocol-Extensions)
 
-当您定义一个协议扩展时，可以指定符合类型必须满足的约束，以便扩展的方法和属性可用。您可以在要扩展的协议名称后写一个泛型 `where` 子句来编写这些约束。有关泛型 `where` 子句的更多信息，请参见泛型 Where 子句。
+当您定义一个协议扩展时，可以指定符合类型必须满足的约束，以便扩展的方法和属性可用。您可以在要扩展的协议名称后写一个泛型 `where` 子句来编写这些约束。有关泛型 `where` 子句的更多信息，请参见[泛型 Where 子句](generics.md#泛型-where-子句)。
 
 例如，您可以定义一个扩展，用于适用于任何符合 `Equatable` 协议的集合的 `Collection` 协议。通过将集合的元素限制为 `Equatable` 协议（Swift 标准库的一部分），您可以使用 `==` 和 `!=` 运算符来检查两个元素之间的相等性和不等性。
 
