@@ -11,6 +11,10 @@ export default defineAdditionalConfig({
     search: { options: searchOptions() },
 
     sidebar: {
+      "/docs/coremotion": {
+        base: "/docs/coremotion",
+        items: sidebarCoreMotion()
+      },
       "/docs/swift/": {
         base: "/docs/swift/",
         items: sidebarSwift(),
@@ -21,7 +25,7 @@ export default defineAdditionalConfig({
       },
       "/docs/swiftdata": {
         base: "/docs/swiftdata",
-        items: sidebarSwiftDate(),
+        items: sidebarSwiftData(),
       },
       "/docs/foundation": {
         base: "/docs/foundation",
@@ -131,24 +135,36 @@ function nav(): DefaultTheme.NavItem[] {
       activeMatch: "/docs",
       items: [
         {
-          text: "Swift",
-          link: "/docs/swift/preface/about-swift",
-        },
-        {
-          text: "SwiftUI",
-          link: "/docs/swiftui/",
-        },
-        {
-          text: "Swift Data",
-          link: "/docs/swiftdata/",
+          text: "Core Motion",
+          link: "/docs/coremotion/",
         },
         {
           text: "Foundation",
           link: "/docs/foundation/",
         },
         {
+          text: "Network Extension",
+          link: "/docs/networkextension/",
+        },
+        {
+          text: "Swift",
+          link: "/docs/swift/preface/about-swift",
+        },
+        {
+          text: "Swift Data",
+          link: "/docs/swiftdata/",
+        },
+        {
+          text: "SwiftUI",
+          link: "/docs/swiftui/",
+        },
+        {
           text: "User Notifications",
           link: "/docs/usernotifications/",
+        },
+        {
+          text: "WebKit",
+          link: "/docs/webkit/",
         },
         {
           text: "WidgetKit",
@@ -171,6 +187,30 @@ function nav(): DefaultTheme.NavItem[] {
       ],
     },
   ];
+}
+
+function sidebarCoreMotion(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "Activity",
+      collapsed: false,
+      base: "/docs/coremotion/activity/",
+      items: [
+        {
+          text: "CMHeadphoneActivityManager",
+          collapsed: true,
+          base: "/docs/coremotion/activity/cmheadphoneactivitymanager/",
+          link: "/",
+          items: [
+            {
+              text: "isActivityActive",
+              link: "isactivityactive"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 
 function sidebarSwift(): DefaultTheme.SidebarItem[] {
@@ -545,7 +585,7 @@ function sidebarSwiftUI(): DefaultTheme.SidebarItem[] {
   ];
 }
 
-function sidebarSwiftDate(): DefaultTheme.SidebarItem[] {
+function sidebarSwiftData(): DefaultTheme.SidebarItem[] {
   return [];
 }
 
@@ -575,22 +615,45 @@ function sidebarPosts(): DefaultTheme.SidebarItem[] {
   return [
     {
       text: "教程",
-      collapsed: true,
+      collapsed: false,
       base: "/posts/tutorials/",
       items: [
-        {
-          text: "Button 入门",
-          link: "the-ultimate-swiftui-button-tutorial",
-        },
         {
           text: "如何使用 SwiftUI 解析 HTML 文件",
           link: "how-to-render-html-use-swiftui",
         },
         {
+          text: "SwiftUI Introspect 入门",
+          link: "introduction-to-swiftui-introspect"
+        },
+        {
           text: "WebKit 入门",
           link: "introduction-to-webkit",
         },
+        {
+          text: "掌握 TextEditor",
+          link: "mastering-texteditor",
+        },
+        {
+          text: "Button 入门",
+          link: "the-ultimate-swiftui-button-tutorial",
+        },
       ],
+    },
+    {
+      text: "笔记",
+      collapsed: false,
+      base: "/posts/notes/",
+      items: [
+        {
+          text: "合入主分支最新代码更改",
+          link: "rebase-or-merge"
+        },
+        {
+          text: "使用三方 API 配置 Xcode 中的 Coding Intelligence",
+          link: "use-coding-intelligence-with-api"
+        }
+      ]
     },
     {
       text: "RSS 订阅",
