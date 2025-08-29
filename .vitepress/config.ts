@@ -105,6 +105,7 @@ export default defineConfig({
 	},
 	themeConfig: {
 		socialLinks: [
+			{ icon: "github", link: "https://github.com/wangqiyangx/wangqiyangx.github.io", ariaLabel: "GitHUb"},
 			{ icon: "x", link: "https://x.com/wangqiyangx", ariaLabel: "X" },
 			{
 				icon: "rss",
