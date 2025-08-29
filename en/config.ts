@@ -17,7 +17,7 @@ export default defineAdditionalConfig({
 
 		editLink: {
 			pattern:
-				"https://github.com/wangqiyangx/vitepress-blog/edit/main/docs/:path",
+				"https://github.com/wangqiyangx/wangqiyangX.github.io/edit/main/:path",
 			text: "Edit this page on GitHub",
 		},
 

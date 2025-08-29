@@ -1,7 +1,7 @@
 {
 	"$schema": "./node_modules/@lunariajs/core/config.schema.json",
 	"repository": {
-		"name": "wangqiyangx/vitepress-blog"
+		"name": "wangqiyangx/wangqiyangX.github.io"
 	},
 	"files": [
 		{

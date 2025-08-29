@@ -19,7 +19,7 @@ export default defineAdditionalConfig({
 
 		editLink: {
 			pattern:
-				"https://github.com/wangqiyangx/vitepress-blog/edit/main/docs/:path",
+				"https://github.com/wangqiyangx/wangqiyangX.github.io/edit/main/:path",
 			text: "在 GitHUab 上编辑此页面",
 		},
 
