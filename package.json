@@ -1,0 +1,26 @@
+{
+	"private": true,
+	"type": "module",
+	"devDependencies": {
+		"@giscus/vue": "^3.1.1",
+		"@types/node": "^24.3.0",
+		"feed": "^5.1.0",
+		"husky": "^9.1.7",
+		"markdown-it-mathjax3": "^4.3.2",
+		"vitepress": "2.0.0-alpha.11",
+		"vue": "^3.5.19"
+	},
+	"scripts": {
+		"docs:dev": "vitepress dev",
+		"docs:build": "vitepress build",
+		"docs:preview": "vitepress preview",
+		"docs:publish": "cd .vitepress && pnpm docs:build && tar -czf dist.tar.gz dist",
+		"prepare": "husky",
+		"lunaria:build": "lunaria build",
+		"lunaria:preview": "lunaria preview"
+	},
+	"dependencies": {
+		"@lunariajs/core": "^0.1.1",
+		"vitepress-plugin-group-icons": "^1.6.3"
+	}
+}
